@@ -36,7 +36,12 @@ if ($uploadOk == 0) {
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+        ?>
+        <response>
+            <result>12</result>
+            <message><?php echo(basename( $_FILES["fileToUpload"]["name"])); ?> was uploaded.</message>
+        </response>
+        <?php
     } else {
         echo "Sorry, there was an error uploading your file.";
     }

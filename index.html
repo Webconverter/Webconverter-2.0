@@ -76,7 +76,7 @@
 					</div>
 					<div class="clear"></div>
 				</div>
-			<form action="oldupload.php" method="post" enctype="multipart/form-data" class="temp-form">
+			<form action="oldupload.php" method="post" id="testForm" enctype="multipart/form-data" class="temp-form">
 			    <table>
 				    <tr>
 				   		<td>
@@ -141,6 +141,36 @@
 	  if (e.keyCode === 13) $('#andreasbutton').click();     // enter
 	  if (e.keyCode === 27) $('#overlay').click();   // esc
 	});
+
+ $("#testForm").submit(function(e){
+		 var postData = $(this).serializeArray();
+		 var formURL = $(this).attr("action");
+/******/
+    $.ajax(
+    {
+        url : formURL,
+        type: "POST",
+        crossDomain: true,
+        data : postData,
+        dataType: "json",
+        success:function(data, textStatus, jqXHR) 
+        {
+            //data: return data from server
+            alert('it worked');
+            alert(this.data + "," + this.url);
+        },
+        error: function(jqXHR, textStatus, errorThrown) 
+        {
+            //if fails   
+            alert('it didnt work');   
+        }
+    });
+    e.preventDefault(); //STOP default action
+    e.unbind();
+});
+
+
+});
 </script>
 </body>
 </html>
