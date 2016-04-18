@@ -190,9 +190,7 @@ function uploadFiles(event)
     // Create a formdata object and add the files
     var form = $("#testForm")[0];
     var data = new FormData(form);
-
-    $("#rilfil").files(function(key, value)
-    {
+    $("#rilfil").each(files, function(key, value){
         data.append(key, value);
     });
 
