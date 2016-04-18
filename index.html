@@ -80,7 +80,7 @@
 			    <table>
 				    <tr>
 				   		<td>
-				   			<input name="fileToUpload" type="file" accept="image/*" />
+				   			<input name="fileToUpload" id="rilfil" type="file" accept="image/*" />
 				   		</td>
 				    </tr>
 				    <tr>
@@ -189,16 +189,9 @@ function uploadFiles(event)
 
     // Create a formdata object and add the files
     var form = $("#testForm")[0];
-    if(typeof FormData == "undefined"){
-		var data = [];							
-		data.push("files[]", $conv(this)[0]);
-	}else{
-		var data = new FormData();
-		data.append("files[]", $conv(this).prop("files")[0]);
-	}
-    //var data = new FormData(form);
+    var data = new FormData(form);
 
-    $.each(files, function(key, value)
+    $("#rilfil").files(function(key, value)
     {
         data.append(key, value);
     });
