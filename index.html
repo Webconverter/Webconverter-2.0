@@ -166,14 +166,15 @@ form.onsubmit = function(event) {
 		}
 		// Add the file to the request.
 		formData.append('photos[]', file, file.name);
-		// Files
+		/*// Files
 		formData.append(name, file, filename);
 
 		// Blobs
 		formData.append(name, blob, filename);
 
 		// Strings
-		formData.append(name, value);    
+		formData.append(name, value);   
+		*/ 
 	}
 	// Set up the request.
 	var xhr = new XMLHttpRequest();
