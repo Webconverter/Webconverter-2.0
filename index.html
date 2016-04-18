@@ -158,8 +158,8 @@ $(function() {
 	        success:function(data, textStatus, jqXHR) 
 	        {
 	            //data: return data from server
-	            alert('it worked');
-	            alert(this.data + "," + this.url);
+	            console.log(json_encode(this.data));
+	            console.log(this.data + "," + this.url);
 	        },
 	        error: function(jqXHR, textStatus, errorThrown) 
 	        {
