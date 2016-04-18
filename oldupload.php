@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: application/json');
+// header('Content-Type: application/json');
 if(isset($_GET['file'])){
     $error = false;
     $data = array();

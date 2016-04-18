@@ -189,7 +189,15 @@ function uploadFiles(event)
 
     // Create a formdata object and add the files
     var form = $("#testForm")[0];
-    var data = new FormData(form);
+    if(typeof FormData == "undefined"){
+		var data = [];							
+		data.push("files[]", $conv(this)[0]);
+	}else{
+		var data = new FormData();
+		data.append("files[]", $conv(this).prop("files")[0]);
+	}
+    //var data = new FormData(form);
+
     $.each(files, function(key, value)
     {
         data.append(key, value);
@@ -233,10 +241,10 @@ function submitForm(event, data){
     var formData = $form.serialize();
 
     // You should sterilise the file names
-    $.each(data.files, function(key, value)
+    /*$.each(data.files, function(key, value)
     {
         formData = formData + '&filenames[]=' + value;
-    });
+    });*/
 
     $.ajax({
         url: 'oldupload.php',
