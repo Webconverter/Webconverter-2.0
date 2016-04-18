@@ -13,7 +13,7 @@
 			<span>convert image files & metadata</span>
 		</header>
 		<main>
-			<form action="#" name="myDropzone" class="dropzone dz-clickable">
+			<form action="oldupload.php" name="myDropzone" class="dropzone dz-clickable">
 			  <div class="fallback">
 			    <input name="file" type="file" accept="image/*" />
 			  </div>
@@ -64,7 +64,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><button type="submit">Convert</button>
+								<td><button type="submit" id="subbutt">Convert</button>
 							</tr>
 							<tr class="aboutmeta">
 							<td></td>
@@ -124,6 +124,9 @@ $(".popup").click(function(e){
   $(".previews").delay(200).fadeIn(300);
   e.preventDefault();
   return false;
+});
+$("#subbutt").click(function(){
+asdasdasdasd
 });
 $("#overlay").click(function(){
   $(".previews").fadeOut(300);
@@ -200,7 +203,7 @@ $('#previewing').attr('height', '230px');
 };
 });
 
-
+$(document).ready(function(){console.log("VER 1");});
 </script>
 </body>
 </html>
