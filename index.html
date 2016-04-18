@@ -76,7 +76,7 @@
 					</div>
 					<div class="clear"></div>
 				</div>
-			<form action="oldupload.php" method="post" id="testForm" enctype="multipart/form-data" class="temp-form">
+			<form action="newupload.php" method="post" id="testForm" enctype="multipart/form-data" class="temp-form">
 			    <table>
 				    <tr>
 				   		<td>
@@ -92,7 +92,8 @@
 				    	</td>
 				    </tr>
 				    <tr>
-				    	<td><img src="img/spinner.gif" id="spinner" /></td>
+				    	<td><img src="img/spinner.gif" id="loading" /></td>
+				    	<td><span id="message"></span></td>
 				    </tr>
 			    </table>
 			</form>
@@ -149,46 +150,56 @@ $(function() {
 });
 
 /* LEZ DO THIS */
-var form = document.getElementById('testForm');
-var fileSelect = document.getElementById('rilfil');
-var uploadButton = document.getElementById('andreasbutton');
-form.onsubmit = function(event) {
-	event.preventDefault();
-	uploadButton.innerHTML = 'Uploading...';
-	// Get the selected files from the input.
-	var files = fileSelect.files;
-	var formData = new FormData();
-	for (var i = 0; i < files.length; i++) {
-		var file = files[i];
-		// Check the file type.
-		if (!file.type.match('image.*')) {
-			continue;
-		}
-		// Add the file to the request.
-		formData.append('photos[]', file, file.name);
-		/*// Files
-		formData.append(name, file, filename);
-
-		// Blobs
-		formData.append(name, blob, filename);
-
-		// Strings
-		formData.append(name, value);   
-		*/ 
-	}
-	// Set up the request.
-	var xhr = new XMLHttpRequest();
-	xhr.open('POST', 'oldupload.php', true);
-	xhr.onload = function () {
-		if (xhr.status === 200) {
-			// File(s) uploaded.
-			uploadButton.innerHTML = 'Upload';
-		} else {
-			alert('An error occurred!');
-		}
-	};
-	xhr.send(formData);
+$(document).ready(function (e) {
+$("#testForm").on('submit',(function(e) {
+e.preventDefault();
+$("#message").empty();
+$('#loading').show();
+$.ajax({
+url: "newupload.php", // Url to which the request is send
+type: "POST",             // Type of request to be send, called as method
+data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+contentType: false,       // The content type used when sending data to the server.
+cache: false,             // To unable request pages to be cached
+processData:false,        // To send DOMDocument or non processed data file it is set to false
+success: function(data)   // A function to be called if request succeeds
+{
+$('#loading').hide();
+$("#message").html(data);
 }
+});
+}));
+
+// Function to preview image after validation
+$(function() {
+$("#file").change(function() {
+$("#message").empty(); // To remove the previous error message
+var file = this.files[0];
+var imagefile = file.type;
+var match= ["image/jpeg","image/png","image/jpg"];
+if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+{
+$('#previewing').attr('src','img/noimage.png');
+$("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+return false;
+}
+else
+{
+var reader = new FileReader();
+reader.onload = imageIsLoaded;
+reader.readAsDataURL(this.files[0]);
+}
+});
+});
+function imageIsLoaded(e) {
+$("#file").css("color","green");
+$('#image_preview').css("display", "block");
+$('#previewing').attr('src', e.target.result);
+$('#previewing').attr('width', '250px');
+$('#previewing').attr('height', '230px');
+};
+});
+
 
 </script>
 </body>
