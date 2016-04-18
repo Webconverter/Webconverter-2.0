@@ -179,3 +179,7 @@ button:hover{
 	box-shadow:inset 0px 0px 5px #83AAD4;
 	color:#fff;
 }
+#spinner{
+	display:none;
+	border-radius:2px;
+}

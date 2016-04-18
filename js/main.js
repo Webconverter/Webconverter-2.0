@@ -1,9 +1,10 @@
 function tim(){
   var dateandtime = Date();
-  alert(dateandtime);
-
-
+  // alert(dateandtime);
+  console.log(dateandtime);
+  return dateandtime;
 }
+/*
 function handleFileSelect(evt) {
   var files = evt.target.files;
   var output = [];
@@ -16,4 +17,4 @@ function handleFileSelect(evt) {
   document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
 }
 
-document.getElementById('files').addEventListener('change', handleFileSelect, false);
+document.getElementById('files').addEventListener('change', handleFileSelect, false);*/
