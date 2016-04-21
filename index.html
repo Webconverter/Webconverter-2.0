@@ -156,13 +156,14 @@ $(function() {
 /* LEZ DO THIS */
 $(document).ready(function() { 
 	$('#testForm').ajaxForm(function() { 
-		console.log("Uploaded " + $("#testForm input:file").val() + " successfully");
+		var newPath = 
+		console.log("Uploaded " + document.getElementById("rilfil").files[0].name + " successfully");
 	}); 
 }); 
 
 
 
-$(document).ready(function(){console.log("VER 2");});
+$(document).ready(function(){console.log("VER 4");});
 </script>
 </body>
 </html>
