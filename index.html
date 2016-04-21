@@ -29,7 +29,7 @@
 					<div class="pre-cont">
 						<table>
 							<tr>
-								<th colspan="2">Settings (<span class="filename"></span>)</th>
+								<th colspan="2"><span class="filename"></span></th>
 							</tr>
 							<tr>
 								<td>Convert from</td>
@@ -156,7 +156,7 @@ $(function() {
 /* LEZ DO THIS */
 $(document).ready(function() { 
 	$('#testForm').ajaxForm(function() { 
-		alert("uploaded"); 
+		console.log("Uploaded " + $("#testForm input:file").val() + " successfully");
 	}); 
 }); 
 
