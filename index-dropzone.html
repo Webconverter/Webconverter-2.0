@@ -13,11 +13,10 @@
 			<span>convert image files & metadata</span>
 		</header>
 		<main>
-		<!--
 			<form action="oldupload.php" name="myDropzone" id="myDropzone" class="dropzone dz-clickable" method="post">
-			-->
-			<form action="oldupload.php" name="myDropzone" method="post">
+			  <div class="fallback">
 			    <input name="file" type="file" accept="image/*" />
+			  </div>
 			  <div class="previews">
 				<!-- Previews kommer her -->
 				<div class="pre-cont">
@@ -28,10 +27,10 @@
 							<tr>
 								<td>Convert from</td>
 								<td>
-									<select name="from" id="fromsel">
-										<option value="png">png</option>
-										<option value="jpg">jpg</option>
-										<option value="gif">gif</option>
+									<select name="from">
+										<option>png</option>
+										<option>jpg</option>
+										<option>gif</option>
 									</select>
 								</td>
 							</tr>
@@ -39,9 +38,9 @@
 								<td>Convert to</td>
 								<td>
 									<select name="to">
-										<option value="png">png</option>
-										<option value="jpg">jpg</option>
-										<option value="gif">gif</option>
+										<option>png</option>
+										<option>jpg</option>
+										<option>gif</option>
 									</select>
 								</td>
 							</tr>
@@ -53,12 +52,12 @@
 								</td>
 							</tr>
 							<tr>
-								<td class="alignright"><input type="checkbox" name="delmeta" /></td>
+								<td class="alignright"><input type="checkbox" name="delmeta" value="Yes" /></td>
 								<td>Delete metadata (<a href="#" class="metad" title="Clicking this won't leave the page">?</a>)</td>
 							</tr>
 							<tr>
 								<td></td>
-								<td><button type="submit" id="subbutt">Convert</button>
+								<td><input type="submit" id="subbutt">Convert</button>
 							</tr>
 							<tr class="aboutmeta">
 							<td></td>
@@ -68,17 +67,16 @@
 							</tr>
 						</table>
 				</div>
-									<div class="pre-img">
+					<div class="pre-img">
 						<!-- <img src="#" alt="#" /> -->
 						<!-- <img src="http://s5.favim.com/orig/52/winter-nature-small-canon-eos-7d-Favim.com-474348.jpg" src="previmgr" alt="Demo img" />  -->
 					</div>
-					
 					<div class="clear"></div>
 				</div>
 			</form>
 			<div id="overlay">
 			</div>
-<!--
+			<!--
 			<form action="oldupload.php" method="post" id="testForm" enctype="multipart/form-data" class="temp-form">
 			    <table>
 				    <tr>
@@ -103,24 +101,24 @@
 		</main>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script><!-- require jQuery -->
+	<script src="js/dropzone.js"></script> <!-- require dropzone -->
 	<script src="js/main.js"></script>
     <script src="http://malsup.github.com/jquery.form.js"></script> 
 	<script>
-function readURL(input) {
-	if ($(".previewimage").length){
-		$(".previewimage").remove();
-	}
-	if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    
-	    reader.onload = function (e) {
-	    	$(".pre-img").append("<img class='previewimage' src='" + e.target.result + "' alt='previewimage' />")
-	        // $('#blah').attr('src', e.target.result);
-	    }
-	    
-	    reader.readAsDataURL(input.files[0]);
-	}
-}
+/* Dropzone */
+Dropzone.options.myDropzone = {
+  init: function() {
+    this.on("success", function(file, responseText) {
+      // Handle the responseText here. For example, add the text to the preview element:
+      file.previewTemplate.appendChild(document.createTextNode(responseText));
+    });
+    this.on("addedfile", function(file) { 
+      // Dropped file
+      $("#overlay").fadeIn(300);
+      $(".previews").delay(200).fadeIn(300);
+     });
+  }
+};
 /* Popup/Overlay */
 $(".popup").click(function(e){
   $("#overlay").fadeIn(300);
@@ -148,18 +146,12 @@ $(".metad").click(function(){
 /* Make popup fade in on upload */
 $(function() {
 	$("input:file").change(function (){
-		// var fileName = $(this).files[0].name;
-		// console.log(fileName);
-		var filN = $(this).val().replace(/C:\\fakepath\\/i, '');
-		var ext = filN.substr(filN.length - 3);
-		if ($("option[value='" + ext + "']").length){
-			$("#fromsel").val(ext);
-		}
+		var fileName = $(this).files[0].name;
+		console.log(fileName);
 		$("#overlay").fadeIn(300);
 		$(".previews").delay(200).fadeIn(300);
-        readURL(this);
-		$(".filename").html(filN);
-		$(".filenamev").val(filN);
+		$(".filename").html(fileName);
+		$(".filenamev").val(fileName);
  	});
 });
 
