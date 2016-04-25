@@ -17,24 +17,15 @@
 			  <div class="fallback">
 			    <input name="file" type="file" accept="image/*" />
 			  </div>
-			</form>
-			<div id="overlay">
-			</div>
-				<div class="previews">
-				<!-- Previews kommer her -->
-					<div class="pre-img">
-						<!-- <img src="#" alt="#" /> -->
-						<!-- <img src="http://s5.favim.com/orig/52/winter-nature-small-canon-eos-7d-Favim.com-474348.jpg" src="previmgr" alt="Demo img" />  -->
-					</div>
-					<div class="pre-cont">
+				<div class="pre-cont">
 						<table>
 							<tr>
-								<th colspan="2"><span class="filename"></span></th>
+								<th colspan="2"><span class="filename"></span><input type="hidden" class="filenamev" name="name" /></th>
 							</tr>
 							<tr>
 								<td>Convert from</td>
 								<td>
-									<select>
+									<select name="from">
 										<option>png</option>
 										<option>jpg</option>
 										<option>gif</option>
@@ -44,7 +35,7 @@
 							<tr>
 								<td>Convert to</td>
 								<td>
-									<select>
+									<select name="to">
 										<option>png</option>
 										<option>jpg</option>
 										<option>gif</option>
@@ -54,12 +45,12 @@
 							<tr>
 								<td>Dimensions</td>
 								<td>
-									<input type="text" class="wideinp" value="640" />px <strong>x</strong>
-									<input type="text" class="tallinp" value="200" />px
+									<input type="text" class="wideinp" name="width" value="640" />px <strong>x</strong>
+									<input type="text" class="tallinp" name="height" value="200" />px
 								</td>
 							</tr>
 							<tr>
-								<td class="alignright"><input type="checkbox" value="Delete metadata" /></td>
+								<td class="alignright"><input type="checkbox" name="delmeta" /></td>
 								<td>Delete metadata (<a href="#" class="metad" title="Clicking this won't leave the page">?</a>)</td>
 							</tr>
 							<tr>
@@ -73,7 +64,17 @@
 							</td>
 							</tr>
 						</table>
+				</div>
+			</form>
+			<div id="overlay">
+			</div>
+				<div class="previews">
+				<!-- Previews kommer her -->
+					<div class="pre-img">
+						<!-- <img src="#" alt="#" /> -->
+						<!-- <img src="http://s5.favim.com/orig/52/winter-nature-small-canon-eos-7d-Favim.com-474348.jpg" src="previmgr" alt="Demo img" />  -->
 					</div>
+					
 					<div class="clear"></div>
 				</div>
 			<form action="oldupload.php" method="post" id="testForm" enctype="multipart/form-data" class="temp-form">
@@ -145,10 +146,12 @@ $(".metad").click(function(){
 /* Make popup fade in on upload */
 $(function() {
 	$("input:file").change(function (){
-		var fileName = $(this).val();
+		var fileName = $(this).files[0].name;
+		console.log(fileName);
 		$("#overlay").fadeIn(300);
 		$(".previews").delay(200).fadeIn(300);
 		$(".filename").html(fileName);
+		$(".filenamev").val(fileName);
  	});
 });
 
