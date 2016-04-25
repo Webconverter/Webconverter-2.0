@@ -2,22 +2,40 @@
 $target_dir = "uploads/";
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
 
-$fName = $_REQUEST['name']; // Filnavn (ex: "Tiss.png")
+
+if (isset($REQUEST['name']){
+    $fName = $_REQUEST['name']; // Filnavn (ex: "Tiss.png")
+}
 // Skift til random
 $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
-$fFrom = $_REQUEST['from']; // Filtype fra
-$fTo = $_REQUEST['to']; // Filtype til
-$fWidth = $_REQUEST['width'];
-$fHeight = $_REQUEST['height'];
-$fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
-$fFile = $_REQUEST['file']; // Selve bildet
+if (isset($REQUEST['name']){
+    $fFrom = $_REQUEST['from']; // Filtype fra
+}
+if (isset($REQUEST['name']){
+    $fTo = $_REQUEST['to']; // Filtype til
+}
+if (isset($REQUEST['name']){
+    $fWidth = $_REQUEST['width'];
+}
+if (isset($REQUEST['name']){
+    $fHeight = $_REQUEST['height'];
+}
+if (isset($REQUEST['name']){
+    $fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
+}
+if (isset($REQUEST['name']){
+    $fFile = $_REQUEST['file']; // Selve bildet
+}
+/* Husk å sikre alle values for MySQL injection her */
+
+
 // Target file må vell være selve filen, ikke filnavnet??
 $target_file = $fFile;
 
 /*****
 FOR Å TESTE OM ALT BLIR SENDT:
 ******/
-die("Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Høgde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile);
+die("<hr /><br /><div style='font-family:sans-serif;font-size:13px;line-height:1.5em;color:#333;padding:20px;margin:20px;background:#e1e1e1;border:1px solid #aaa;'>Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Hoogde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile."</div>");
 /*********/
 
 $uploadOk = 1;
