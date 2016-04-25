@@ -18,24 +18,12 @@ if (isset($REQUEST['name'])){
 }
 // Skift til random
 $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
-if (isset($REQUEST['name'])){
     $fFrom = $_REQUEST['from']; // Filtype fra
-}
-if (isset($REQUEST['name'])){
     $fTo = $_REQUEST['to']; // Filtype til
-}
-if (isset($REQUEST['name'])){
     $fWidth = $_REQUEST['width'];
-}
-if (isset($REQUEST['name'])){
     $fHeight = $_REQUEST['height'];
-}
-if (isset($REQUEST['name'])){
     $fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
-}
-if (isset($REQUEST['name'])){
     $fFile = $_REQUEST['file']; // Selve bildet
-}
 /* Husk å sikre alle values for MySQL injection her */
 
 
