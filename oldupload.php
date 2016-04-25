@@ -18,17 +18,23 @@ if (isset($REQUEST['name'])){
     $fName = $_REQUEST['name']; // Filnavn (ex: "Tiss.png")
 }
 // Skift til random
-$fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
+    $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
     $fFrom = $_REQUEST['from']; // Filtype fra
     $fTo = $_REQUEST['to']; // Filtype til
     $fWidth = $_REQUEST['width'];
     $fHeight = $_REQUEST['height'];
-    $fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
-   // $fFile = $_REQUEST['file']; // Selve bildet
-    if (!empty($_FILES)) {
+    if (isset($_REQUEST['delmeta'])){
+        $fDelmeta = "yes";
+    }else{
+        $fDelmeta = "no";
+    }
+    //$fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
+
+    $fFile = $_REQUEST['file']; // Selve bildet
+    /*if (!empty($_FILES)) {
         $tempFile = $_FILES['file']['tmp_name'];
         $fFile = $tempFile;
-    }
+    }*/
 /* Husk å sikre alle values for MySQL injection her */
 
 
