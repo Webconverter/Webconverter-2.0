@@ -2,6 +2,24 @@
 $target_dir = "uploads/";
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
 
+$fName = $_REQUEST['name']; // Filnavn (ex: "Tiss.png")
+// Skift til random
+$fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
+$fFrom = $_REQUEST['from']; // Filtype fra
+$fTo = $_REQUEST['to']; // Filtype til
+$fWidth = $_REQUEST['width'];
+$fHeight = $_REQUEST['height'];
+$fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
+$fFile = $_REQUEST['file']; // Selve bildet
+// Target file må vell være selve filen, ikke filnavnet??
+$target_file = $fFile;
+
+/*****
+FOR Å TESTE OM ALT BLIR SENDT:
+******/
+die("Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Høgde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile);
+/*********/
+
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
