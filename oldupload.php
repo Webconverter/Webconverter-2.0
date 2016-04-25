@@ -12,6 +12,7 @@ $fWidth = null;
 $fHeight = null;
 $fDelmeta = null;
 $fFile = null;
+$tempFile = null;
 
 if (isset($REQUEST['name'])){
     $fName = $_REQUEST['name']; // Filnavn (ex: "Tiss.png")
@@ -23,7 +24,11 @@ $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
     $fWidth = $_REQUEST['width'];
     $fHeight = $_REQUEST['height'];
     $fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
-    $fFile = $_REQUEST['file']; // Selve bildet
+   // $fFile = $_REQUEST['file']; // Selve bildet
+    if (!empty($_FILES)) {
+        $tempFile = $_FILES['file']['tmp_name'];
+        $fFile = $tempFile;
+    }
 /* Husk å sikre alle values for MySQL injection her */
 
 
