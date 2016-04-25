@@ -5,6 +5,55 @@
 	<title>Web Converter</title>
 	<link rel="stylesheet" href="css/dropzone.css">
 	<link rel="stylesheet" href="css/style.css">
+	<style>
+	.hideinput{
+	    width: 0.1px;
+	    height: 0.1px;
+	    opacity: 0;
+	    overflow: hidden;
+	    position: absolute;
+	    z-index: -1;
+	}
+	.hideinput + label{
+		border: 1px solid #aaa;
+		background-color: #f1e5e6;
+		padding: 5px;
+		color: #333;
+		width:100%;
+		font-size: 1.25rem;
+		font-weight: 700;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		cursor: pointer;
+		display: inline-block;
+		overflow: hidden;
+		height:35px;
+		position: relative;
+	}
+	.hideinput + label span{
+		display:inline-block;
+		position:absolute;
+		top:3px;
+		right:5px;
+		padding:5px;
+		text-align:right;
+		font-size:13px;
+		color:#aaa;
+		background:#e1e1e1;
+		border:1px solid #e1e1e1;
+	}
+	.hideinput + label span:hover{
+		border-color:#aaa;
+		box-shadow:0px 0px 5px #fff;
+	}
+	.inputfile-6 + label strong{
+	    height: 100%;
+	    color: #f1e5e6;
+	    background-color: #d3394c;
+	    display: inline-block;
+	        padding: 0.625rem 1.25rem;
+	}
+	</style>
 </head>
 <body>
 	<div id="container">
@@ -17,7 +66,8 @@
 			<form action="oldupload.php" name="myDropzone" id="myDropzone" class="dropzone dz-clickable" method="post">
 			-->
 			<form action="oldupload.php" name="myDropzone" method="post">
-			    <input name="file" type="file" accept="image/*" />
+			    <input name="file" id="file" class="hideinput" type="file" accept="image/*" />
+			    <label for="file"><span class="dasfiln"></span><strong><svg xmlns="http://www.w3.org/2000/svg" width="20" height="17" viewBox="0 0 20 17"><path d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg> Choose file...</strong></label>
 			  <div class="previews">
 				<!-- Previews kommer her -->
 				<div class="pre-cont">
@@ -122,7 +172,7 @@ function readURL(input) {
 	}
 }
 /* Popup/Overlay */
-$(".popup").click(function(e){
+$(".popup, .dasfiln").click(function(e){
   $("#overlay").fadeIn(300);
   $(".previews").delay(200).fadeIn(300);
   e.preventDefault();
@@ -148,6 +198,7 @@ $(".metad").click(function(){
 /* Make popup fade in on upload */
 $(function() {
 	$("input:file").change(function (){
+
 		// var fileName = $(this).files[0].name;
 		// console.log(fileName);
 		var filN = $(this).val().replace(/C:\\fakepath\\/i, '');
@@ -160,6 +211,7 @@ $(function() {
         readURL(this);
 		$(".filename").html(filN);
 		$(".filenamev").val(filN);
+		$(".dasfiln").html(filN);
  	});
 });
 
