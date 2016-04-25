@@ -3,6 +3,16 @@ $target_dir = "uploads/";
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
 
 
+
+// Lag alle variabler så de fins uansett
+$fName = null;
+$fFrom = null;
+$fTo = null;
+$fWidth = null;
+$fHeight = null;
+$fDelmeta = null;
+$fFile = null;
+
 if (isset($REQUEST['name'])){
     $fName = $_REQUEST['name']; // Filnavn (ex: "Tiss.png")
 }
