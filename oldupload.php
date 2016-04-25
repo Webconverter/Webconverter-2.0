@@ -1,9 +1,6 @@
 <?php
 $target_dir = "uploads/";
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
-
-
-
 // Lag alle variabler så de fins uansett
 $fName = null;
 $fFrom = null;
@@ -13,7 +10,6 @@ $fHeight = null;
 $fDelmeta = null;
 $fFile = null;
 $tempFile = null;
-
 if (isset($REQUEST['name'])){
     $fName = $_REQUEST['name']; // Filnavn (ex: "Tiss.png")
 }
@@ -29,15 +25,12 @@ if (isset($REQUEST['name'])){
         $fDelmeta = "no";
     }
     //$fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
-
     $fFile = $_REQUEST['file']; // Selve bildet
     /*if (!empty($_FILES)) {
         $tempFile = $_FILES['file']['tmp_name'];
         $fFile = $tempFile;
     }*/
 /* Husk å sikre alle values for MySQL injection her */
-
-
 // Target file må vell være selve filen, ikke filnavnet??
 $target_file = $fFile;
 
