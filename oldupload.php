@@ -78,5 +78,17 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-
+$im = new Imagick($target_file);
+$img_format = null;
+$wished_format = null;
+if($img_format = "jpg"){
+ if($wished_format = "png"){
+ $im->setimageformat( "png" );
+  }
+}
+else if ($img_format = "png"){
+  if($wished_format = "jpg"){
+    $im->setimageformat(" jpg ")
+  }
+}
 ?>
