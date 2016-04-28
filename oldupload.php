@@ -81,18 +81,6 @@ if ($uploadOk == 0) {
 $im = new Imagick($target_file);
 $img_format = null;
 $wished_format = $fto;
-if($img_format == "jpg"){
- if($wished_format == "png"){
- $im->setimageformat( "png" );
-  }
-}
-else if ($img_format == "png"){
-  if($wished_format == "jpg"){
-    $im->setimageformat(" jpg ");
-  }
-}
-//Denne e her for test grunner
-$im->writeImage( "fuckmoradi" );
+imagepng(imagecreatefromstring(file_get_contents($filename)), "output.png");
 
-echo $wished_format;
 ?>
