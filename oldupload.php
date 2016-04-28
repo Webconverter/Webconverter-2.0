@@ -1,6 +1,6 @@
 <?php
 $target_dir = "uploads/";
-$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
+$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
 // Lag alle variabler så de fins uansett
 $fName = null;
 $fFrom = null;
@@ -80,7 +80,7 @@ if ($uploadOk == 0) {
 }
 $im = new Imagick($target_file);
 $img_format = null;
-$wished_format = null;
+$wished_format = $fto;
 if($img_format = "jpg"){
  if($wished_format = "png"){
  $im->setimageformat( "png" );
@@ -88,7 +88,11 @@ if($img_format = "jpg"){
 }
 else if ($img_format = "png"){
   if($wished_format = "jpg"){
-    $im->setimageformat(" jpg ")
+    $im->setimageformat(" jpg ");
   }
 }
+//Denne e her for test grunner
+$im->writeImage( 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . );
+
+echo wished_format;
 ?>
