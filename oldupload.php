@@ -92,7 +92,7 @@ else if ($img_format = "png"){
   }
 }
 //Denne e her for test grunner
-$im->writeImage( 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . );
+$im->writeImage( 'fuckmoradi'.$im; );
 
-echo wished_format;
+echo $wished_format;
 ?>
