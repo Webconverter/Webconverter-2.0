@@ -78,8 +78,8 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-$im = new Imagick($target_file);
-$img_format = null;
+
+
 $wished_format = $fto;
 imagepng(imagecreatefromstring(file_get_contents($filename)), "output.png");
 
