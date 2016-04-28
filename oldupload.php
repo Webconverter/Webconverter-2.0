@@ -81,6 +81,6 @@ if ($uploadOk == 0) {
 
 
 $wished_format = $fto;
-imagepng(imagecreatefromstring(file_get_contents($filename)), "output.png");
+imagepng(imagecreatefromstring(file_get_contents($target_file), "output.png");
 
 ?>
