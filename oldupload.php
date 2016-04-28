@@ -78,9 +78,4 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-
-
-$wished_format = $fto;
-imagepng(imagecreatefromstring(file_get_contents($target_file), "output.png");
-
 ?>
