@@ -92,7 +92,7 @@ else if ($img_format = "png"){
   }
 }
 //Denne e her for test grunner
-$im->writeImage( 'fuckmoradi'.$im; );
+$im->writeImage( "fuckmoradi" );
 
 echo $wished_format;
 ?>
