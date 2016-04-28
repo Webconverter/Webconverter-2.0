@@ -2,6 +2,7 @@
 $target_dir = "uploads/";
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
 // Lag alle variabler så de fins uansett
+$fileToUpload = null;
 $fName = null;
 $fFrom = null;
 $fTo = null;
