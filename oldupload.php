@@ -71,6 +71,7 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
+
 // if everything is ok, try to upload file
 } else {
     if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
@@ -79,4 +80,15 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
+
+if ($fTo == "jpg"){ // Convert to JPG
+
+
+}else if($fTo == "png"){ // Convert to PNG
+
+}else if($fTo == "gif"){ // Convert to GIF
+
+}
+
+
 ?>
