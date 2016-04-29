@@ -11,6 +11,7 @@ $fHeight = null;
 $fDelmeta = null;
 $fFile = null;
 $tempFile = null;
+                    if (isset($_FILES['fileToUpload'])) {
 if (isset($REQUEST['vname'])){
     $fName = $_REQUEST['vname']; // Filnavn (ex: "Tiss.png")
 }
@@ -90,5 +91,5 @@ if ($fTo == "jpg"){ // Convert to JPG
 
 }
 
-
+                    }
 ?>

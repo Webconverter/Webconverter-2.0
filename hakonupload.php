@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL | E_STRICT);
+if (isset($_POST['']) && isset($_FILES['avatar'])) {
 $target_dir = "uploads/";
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
 // Lag alle variabler så de fins uansett
