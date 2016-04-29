@@ -44,7 +44,7 @@ $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 // Check if image file is a actual image or fake image
 if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES['file']["tmp_name"]);
+    $check = getimagesize($_FILES['fileToUpload']["tmp_name"]);
     if($check !== false) {
         echo "File is an image - " . $check["mime"] . ".";
         $uploadOk = 1;
@@ -59,7 +59,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_REQUEST["file"]["size"] > 50000000) {
+if ($_REQUEST["fileToUpload"]["size"] > 50000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
@@ -74,8 +74,8 @@ if ($uploadOk == 0) {
 
 // if everything is ok, try to upload file
 } else {
-    if (move_uploaded_file($_REQUEST["file"]["tmp_name"], $target_file)) {
-        echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
+    if (move_uploaded_file($_REQUEST["fileToUpload"]["tmp_name"], $target_file)) {
+        echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
     } else {
         echo "Sorry, there was an error uploading your file.";
     }
