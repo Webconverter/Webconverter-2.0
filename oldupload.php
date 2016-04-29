@@ -27,7 +27,7 @@ if (isset($REQUEST['vname'])){
         $fDelmeta = "no";
     }
     //$fDelmeta = $_REQUEST['delmeta']; // Checkbox, delete meta
-    $fFile = $_REQUEST['file']; // Selve bildet
+    $fFile = $_FILES['fileToUpload']; // Selve bildet
     /*if (!empty($_FILES)) {
         $tempFile = $_FILES['file']['tmp_name'];
         $fFile = $tempFile;
