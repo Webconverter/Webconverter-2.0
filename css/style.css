@@ -231,3 +231,4 @@ button:hover{
     display: inline-block;
         padding: 0.625rem 1.25rem;
 }
+#fromsel{padding:2px 2px;width:100%;border-radius:2px;border:1px solid #aaa;}
