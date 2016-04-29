@@ -40,24 +40,23 @@
 								<select name="to">
 									<option value="png">png</option>
 									<option value="jpg">jpg</option>
-									<option value="gif">gif</option>
 								</select>
 							</td>
 						</tr>
 						<tr>
 							<td>Dimensions</td>
 							<td>
-								<input type="text" class="wideinp" name="width" value="640" />px <strong>x</strong>
-								<input type="text" class="tallinp" name="height" value="200" />px
+								<input type="text" onClick="this.select();" class="wideinp" name="width" value="640" />px <strong>x</strong>
+								<input type="text" onClick="this.select();" class="tallinp" name="height" value="200" />px
 							</td>
 						</tr>
 						<tr>
 							<td class="alignright"><input type="checkbox" name="delmeta" /></td>
-							<td>Delete metadata (<a href="#" class="metad" title="Clicking this won't leave the page">?</a>)</td>
+							<td><label for="delmeta">Delete metadata (<a href="#" class="metad" title="Clicking this won't leave the page">?</a>)</label></td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><button type="submit" id="subbutt">Convert</button>
+							<td><button type="submit" id="subbutt">Upload & Convert</button>
 						</tr>
 						<tr class="aboutmeta">
 							<td></td>
@@ -74,6 +73,7 @@
 			<div id="overlay">
 			</div>
 			<div class="hideimg" style="opacity:0;position:fixed;left:-999999;top:-99999"></div>
+			<div id="imglist"></div>
 		</main>
 	</div>
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script><!-- require jQuery -->
