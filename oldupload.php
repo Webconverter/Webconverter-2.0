@@ -1,6 +1,6 @@
 <?php
 $target_dir = "uploads/";
-$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
+$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 // Lag alle variabler så de fins uansett
 $fileToUpload = null;
 $fName = null;
