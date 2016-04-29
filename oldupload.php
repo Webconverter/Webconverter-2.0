@@ -67,7 +67,7 @@ if ($_FILES["fileToUpload"]["size"] > 50000000) {
 }
 // Allow certain file formats
 if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-    die;
+    die("line 70");
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
@@ -84,10 +84,10 @@ if ($uploadOk == 0) {
 }
 
 if ($fTo == "jpg"){ // Convert to JPG
-
+    echo("jpg file (line: 87)");
 
 }else if($fTo == "png"){ // Convert to PNG
-
+    echo("png file (line: 90)");
 }else if($fTo == "gif"){ // Convert to GIF
 
 }
