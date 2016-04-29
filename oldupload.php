@@ -11,8 +11,8 @@ $fHeight = null;
 $fDelmeta = null;
 $fFile = null;
 $tempFile = null;
-if (isset($REQUEST['name'])){
-    $fName = $_REQUEST['name']; // Filnavn (ex: "Tiss.png")
+if (isset($REQUEST['vname'])){
+    $fName = $_REQUEST['vname']; // Filnavn (ex: "Tiss.png")
 }
 // Skift til random
     $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
