@@ -91,5 +91,7 @@ if ($fTo == "jpg"){ // Convert to JPG
 
 }
 
+                    }else{
+                        die("file doesn't exist for some reason");
                     }
 ?>
