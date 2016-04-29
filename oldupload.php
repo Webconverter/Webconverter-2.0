@@ -34,7 +34,8 @@ if (isset($REQUEST['vname'])){
     }*/
 /* Husk å sikre alle values for MySQL injection her */
 // Target file må vell være selve filen, ikke filnavnet??
-$target_file = $fFile;
+$target_file = "uploads/".$fName;
+$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
 
 /*****
 FOR Å TESTE OM ALT BLIR SENDT:
@@ -60,7 +61,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_REQUEST["fileToUpload"]["size"] > 50000000) {
+if ($_FILES["fileToUpload"]["size"] > 50000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
