@@ -66,10 +66,10 @@ if ($_FILES["fileToUpload"]["size"] > 50000000) {
     $uploadOk = 0;
 }
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
+/*if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
     die("line 70");
     $uploadOk = 0;
-}
+}*/
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
