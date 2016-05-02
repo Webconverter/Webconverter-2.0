@@ -1,6 +1,6 @@
 <?php
 $target_dir = "uploads/";
-$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
+$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() '.'$fto;
 // Lag alle variabler så de fins uansett
 $fileToUpload = null;
 $fName = null;
@@ -16,7 +16,7 @@ if (isset($REQUEST['vname'])){
     $fName = $_REQUEST['vname']; // Filnavn (ex: "Tiss.png")
 }
 // Skift til random
-    $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.jpg';
+    $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.';
     $fFrom = $_REQUEST['from']; // Filtype fra
     $fTo = $_REQUEST['to']; // Filtype til
     $fWidth = $_REQUEST['width'];
@@ -82,16 +82,6 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-
-if ($fTo == "jpg"){ // Convert to JPG
-    echo("jpg file (line: 87)");
-
-}else if($fTo == "png"){ // Convert to PNG
-    echo("png file (line: 90)");
-}else if($fTo == "gif"){ // Convert to GIF
-
-}
-
                     }else{
                         die("file doesn't exist for some reason");
                     }
