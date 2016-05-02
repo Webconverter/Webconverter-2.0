@@ -81,9 +81,24 @@ if ($uploadOk == 0) {
         echo "Sorry, there was an error uploading your file.";
     }
 }
-                    }else{
-                        die("file doesn't exist for some reason");
+  }else{
+         die("file doesn't exist for some reason");
+       }
+   echo("<hr /><br /><div style='font-family:sans-serif;font-size:13px;line-height:1.5em;color:#333;padding:20px;margin:20px;background:#e1e1e1;border:1px solid #aaa;'>Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Hoogde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile."</div>");
+
+   echo $fFrom;
+   //This does not scele to more than two formats
+   if($fFrom == "jpg"){
+    $imageobject = imagecreatefromjpeg($imageFile);
+    imagepng($imageobject, $imagefile. '.png');
+     if(!$imagefile){
+       echo $imageobject;
+       echo $imagefile;
                     }
-                    echo("<hr /><br /><div style='font-family:sans-serif;font-size:13px;line-height:1.5em;color:#333;padding:20px;margin:20px;background:#e1e1e1;border:1px solid #aaa;'>Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Hoogde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile."</div>");
-    createvar();
+                      }
+   else{
+        die ("soon");
+       }
+  createvar();
+
 ?>
