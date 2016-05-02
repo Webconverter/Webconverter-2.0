@@ -84,5 +84,4 @@ if ($uploadOk == 0) {
                         die("file doesn't exist for some reason");
                     }
                     die("<hr /><br /><div style='font-family:sans-serif;font-size:13px;line-height:1.5em;color:#333;padding:20px;margin:20px;background:#e1e1e1;border:1px solid #aaa;'>Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Hoogde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile."</div>");
-$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . 'jpg';
 ?>
