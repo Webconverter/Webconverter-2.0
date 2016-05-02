@@ -1,5 +1,6 @@
 <?php
 $ffrom = null;
+$imagefile = null;
 
 $imgformat
  function createvar (){
