@@ -1,4 +1,5 @@
 <?php
+require 'conversion.php'
 $target_dir = "uploads/";
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . 'jpg';
 //$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() .'.'.$fto;
