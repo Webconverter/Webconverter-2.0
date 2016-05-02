@@ -1,6 +1,7 @@
 <?php
 $target_dir = "uploads/";
-$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() '.'$fto;
+$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . 'jpg';
+//$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() .'.'.$fto;
 // Lag alle variabler så de fins uansett
 $fileToUpload = null;
 $fName = null;
@@ -16,7 +17,7 @@ if (isset($REQUEST['vname'])){
     $fName = $_REQUEST['vname']; // Filnavn (ex: "Tiss.png")
 }
 // Skift til random
-    $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.';
+    $fName = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . 'jpg';
     $fFrom = $_REQUEST['from']; // Filtype fra
     $fTo = $_REQUEST['to']; // Filtype til
     $fWidth = $_REQUEST['width'];
@@ -35,12 +36,9 @@ if (isset($REQUEST['vname'])){
 /* Husk å sikre alle values for MySQL injection her */
 // Target file må vell være selve filen, ikke filnavnet??
 
-$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
+ $filextension = $_FILES['fileToUpload']['name'];
+ $fFrom = pathinfo($filextension, PATHINFO_EXTENSION);
 
-/*****
-FOR Å TESTE OM ALT BLIR SENDT:
-die("<hr /><br /><div style='font-family:sans-serif;font-size:13px;line-height:1.5em;color:#333;padding:20px;margin:20px;background:#e1e1e1;border:1px solid #aaa;'>Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Hoogde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile."</div>");
-/*********/
 
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -85,4 +83,6 @@ if ($uploadOk == 0) {
                     }else{
                         die("file doesn't exist for some reason");
                     }
+                    die("<hr /><br /><div style='font-family:sans-serif;font-size:13px;line-height:1.5em;color:#333;padding:20px;margin:20px;background:#e1e1e1;border:1px solid #aaa;'>Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Hoogde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile."</div>");
+$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . 'jpg';
 ?>
