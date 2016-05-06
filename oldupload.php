@@ -2,6 +2,7 @@
 require 'conversion.php';
 $target_dir = "uploads/";
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . 'jpg';
+$target_output = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
 //$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() .'.'.$fto;
 // Lag alle variabler så de fins uansett
 $fileToUpload = null;
@@ -87,18 +88,18 @@ if ($uploadOk == 0) {
    echo("<hr /><br /><div style='font-family:sans-serif;font-size:13px;line-height:1.5em;color:#333;padding:20px;margin:20px;background:#e1e1e1;border:1px solid #aaa;'>Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Hoogde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile."</div>");
 
    echo $fFrom;
+   echo $fname;
    //This does not scele to more than two formats
    if($fFrom == "jpg"){
-    $imageobject = imagecreatefromjpeg($imageFile);
-    imagepng($imageobject, $imagefile. '.png');
-     if(!$imagefile){
-       echo $imageobject;
-       echo $imagefile;
+    $imageobject = imagecreatefromjpeg($target_file);
+    imagepng($imageobject, $target_output. '.png');
+
+     if(!$imageobject){
+        die("error");
                     }
                       }
    else{
         die ("soon");
        }
-  createvar();
 
 ?>
