@@ -1,7 +1,7 @@
 <?php
 require 'conversion.php';
 $target_dir = "uploads/";
-$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . 'jpg';
+$target_png = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . 'png';
 $target_output = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid();
 //$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() .'.'.$fto;
 // Lag alle variabler så de fins uansett
@@ -37,7 +37,8 @@ if (isset($REQUEST['vname'])){
     }*/
 /* Husk å sikre alle values for MySQL injection her */
 // Target file må vell være selve filen, ikke filnavnet??
-
+$target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . $Ffrom;
+ echo $filextension;
  $filextension = $_FILES['fileToUpload']['name'];
  $fFrom = pathinfo($filextension, PATHINFO_EXTENSION);
 
@@ -65,11 +66,11 @@ if ($_FILES["fileToUpload"]["size"] > 50000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
-// Allow certain file formats
-/*if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {
-    die("line 70");
-    $uploadOk = 0;
-}*/
+
+//if($ffrom != "jpg" && $ffrom != "png" && $ffrom != "jpeg") {
+//    die("file is not .jpg or .png");
+//    $uploadOk = 0;
+//}
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded.";
@@ -87,19 +88,24 @@ if ($uploadOk == 0) {
        }
    echo("<hr /><br /><div style='font-family:sans-serif;font-size:13px;line-height:1.5em;color:#333;padding:20px;margin:20px;background:#e1e1e1;border:1px solid #aaa;'>Filnavn: ".$fName."<br /> Fra: ".$fFrom."<br />Til: ".$fTo."<br /> Bredde: ".$fWidth."<br />Hoogde: ".$fHeight."<br />Meta: ".$fDelmeta."<br />Fil: ".$fFile."</div>");
 
-   echo $fFrom;
-   echo $fname;
+
    //This does not scele to more than two formats
-   if($fFrom == "jpg"){
+  if($fFrom == "jpg"){
     $imageobject = imagecreatefromjpeg($target_file);
     imagepng($imageobject, $target_output. '.png');
-
-     if(!$imageobject){
-        die("error");
-                    }
-                      }
-   else{
-        die ("soon");
+    $fTo = ".png";
+      if(!$imageobject){
+          die("error 0");
+                       }
+                     }
+   else if($fFrom == "png"){
+        $imageobject = imagecreatefrompng($target_file);
+        imagejpeg($imageobject, $target_output. '.jpg');
+        $fTo = ".jpg";
+        if(!$imageobject){
+          die("error 1");
+        }
        }
 
 ?>
+<meta http-equiv="refresh" content="0; url=http://webconverter.ketil.xyz/<?php echo($target_output.$fTo); ?>">
