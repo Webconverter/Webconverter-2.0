@@ -36,5 +36,5 @@ function stat_db_jpg() {
 }
 function stat_db_png() {
 }
-$conn->close();
+
 ?>
