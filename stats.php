@@ -14,7 +14,6 @@ if ($conn->connect_error){
 }
 echo "connected succsessfully";
 
-//do not run unless for init
 function createstats() {
 $createdbtable_stats =  "CREATE TABLE converter_stats (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
@@ -33,8 +32,24 @@ else   {
 }
 
 function stat_db_jpg() {
+  $sql = "INSERT INTO converter_stats (fsize, ftype, fto)
+VALUES ('1', 'png', 'jpg')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 }
 function stat_db_png() {
+  $sql = "INSERT INTO converter_stats (fsize, ftype, fto)
+VALUES ('1', 'png', 'jpg')";
+
+if ($conn->query($sql) === TRUE) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 }
 
 ?>
