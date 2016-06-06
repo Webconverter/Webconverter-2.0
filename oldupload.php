@@ -36,8 +36,6 @@ if (isset($REQUEST['vname'])){
         $tempFile = $_FILES['file']['tmp_name'];
         $fFile = $tempFile;
     }*/
-/* Husk å sikre alle values for MySQL injection her */
-// Target file må vell være selve filen, ikke filnavnet??
 $target_file = $target_dir . 'image_' . date('Y-m-d-H-i-s') . '_' . uniqid() . '.' . $Ffrom;
  echo $filextension;
  $filextension = $_FILES['fileToUpload']['name'];
